@@ -51,7 +51,6 @@ body {
   border: none;
   border-radius: 0.3em;
   cursor: pointer;
-  transition: background 0.25s ease;
 }
 #new-task button:hover {
   background: #0e62b6;

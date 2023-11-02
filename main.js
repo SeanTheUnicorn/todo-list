@@ -33,8 +33,6 @@ const displayTasks = () => {
     tasksInnerDiv.classList.add("task");
     tasksInnerDiv.setAttribute("id", key);
     tasksInnerDiv.innerHTML = `<span id="taskname">${key.split("_")[1]}</span>`;
-
-    //localStorage would store boolean as string, so we parse it to boolean back
     tasksInnerDiv.innerHTML += `<button class="delete"><i class="fa-solid fa-trash"></i></button>`;
     tasksDiv.appendChild(tasksInnerDiv);
   }
@@ -61,7 +59,6 @@ const removeTask = (taskValue) => {
 
 // Add tasks to localStorage
 const updateStorage = (index, taskValue, completed) => {
-  // Store boolean as a string in localStorage
   localStorage.setItem(`${index}_${taskValue}`, completed.toString());
   displayTasks();
 };
@@ -85,6 +82,3 @@ document.querySelector("#push").addEventListener("click", () => {
     newTaskInput.value = "";
   }
 });
-
-
-
