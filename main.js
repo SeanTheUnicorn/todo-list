@@ -33,8 +33,15 @@ const displayTasks = () => {
     tasksInnerDiv.classList.add("task");
     tasksInnerDiv.setAttribute("id", key);
     tasksInnerDiv.innerHTML = `<span id="taskname">${key.split("_")[1]}</span>`;
+
+    //localStorage would store boolean as string, so we parse it to boolean back
     tasksInnerDiv.innerHTML += `<button class="delete"><i class="fa-solid fa-trash"></i></button>`;
     tasksDiv.appendChild(tasksInnerDiv);
+
+    // Add 'active' class to the task when created (darkmode)
+    if (bodyDiv.classList.contains("active")) {
+      tasksInnerDiv.classList.add("active");
+    }
   }
 
   // Delete tasks
@@ -59,6 +66,7 @@ const removeTask = (taskValue) => {
 
 // Add tasks to localStorage
 const updateStorage = (index, taskValue, completed) => {
+  // Store boolean as a string in localStorage
   localStorage.setItem(`${index}_${taskValue}`, completed.toString());
   displayTasks();
 };
@@ -82,3 +90,35 @@ document.querySelector("#push").addEventListener("click", () => {
     newTaskInput.value = "";
   }
 });
+
+
+
+// Dark mode
+const btn = document.querySelector(".btn");
+const header = document.querySelector(".header");
+const bodyDiv = document.querySelector("body");
+const addBtn = document.getElementById("push");
+const newTask = document.getElementById("new-task");
+const tasksBlock = document.getElementById("tasks");
+const input = document.querySelector("input");
+
+btn.onclick = () => {
+  btn.classList.toggle("active");
+  header.classList.toggle("active");
+  bodyDiv.classList.toggle("active");
+  addBtn.classList.toggle("active");
+  newTask.classList.toggle("active");
+  tasksBlock.classList.toggle("active");
+  input.classList.toggle("active");
+
+  // Toggle the active class for tasks in dark mode
+  const tasks = document.querySelectorAll(".task");
+  tasks.forEach((task) => {
+    if (bodyDiv.classList.contains("active")) {
+      task.classList.add("active");
+    } else {
+      task.classList.remove("active");
+    }
+  });
+};
+

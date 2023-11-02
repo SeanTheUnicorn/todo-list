@@ -51,6 +51,7 @@ body {
   border: none;
   border-radius: 0.3em;
   cursor: pointer;
+  transition: background 0.25s ease;
 }
 #new-task button:hover {
   background: #0e62b6;
@@ -90,4 +91,80 @@ body {
   background: crimson;
   margin-left: auto;
   margin-right: 1em;
+}
+
+/* Dark mode */
+.buttonBox {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  background: rgb(195, 195, 195);
+}
+.buttonBox .btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.buttonBox .btn:hover {
+  opacity: 0.7;
+}
+.buttonBox .btn.active {
+  left: 75%;
+}
+.header {
+  margin-bottom: 20px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: black;
+}
+.header.active {
+  color: white;
+}
+body.active {
+  background: #404a5d;
+}
+#new-task button.active {
+  background: #96c93e;
+}
+#new-task button.active:hover {
+  background: #6c8f2f;
+}
+#new-task.active {
+  background: #3b3d43;
+}
+
+#new-task input.active {
+  background: #3b3d43;
+  color: white;
+}
+
+#new-task input.active:focus {
+  outline: none;
+  border-color: #96c93e;
+}
+
+#tasks.active {
+  background: #3b3d43;
+}
+.task.active {
+  background: #3b3d43;
+  color: white;
+}
+.btn.active {
+  background: #404a5d;
 }
